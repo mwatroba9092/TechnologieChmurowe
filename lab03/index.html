@@ -8,5 +8,21 @@
 <body>
     <h1>Full Stack App</h1>
     <div id="api-result"></div>
+
+    <script>
+        fetch('/api/items')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Błąd sieci: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('api-result').innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('api-result').innerText = 'Wystąpił błąd: ' + error.message;
+            });
+    </script>
 </body>
 </html>
