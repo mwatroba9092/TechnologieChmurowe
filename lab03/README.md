@@ -22,3 +22,13 @@
 4. docker exec me_nginx nginx -s reload
 
 ### ZADANIE 4
+
+1. code default.conf
+2. <img width="650" height="447" alt="image" src="https://github.com/user-attachments/assets/7017eb34-92bf-44fa-80e3-ad83538db3b0" />
+3. code index.html
+4. <img width="862" height="542" alt="image" src="https://github.com/user-attachments/assets/92b1a096-e31c-44ce-833f-800988188697" />
+5. docker cp default.conf me_nginx:/etc/nginx/conf.d/default.conf
+6. docker cp index.html me_nginx:/usr/share/nginx/html/index.html
+7. docker exec me_nginx nginx -s reload
+
+
