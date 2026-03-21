@@ -16,10 +16,11 @@
 
 ### ZADANIE 3
 
-1. code default.conf
-2. <img width="571" height="227" alt="image" src="https://github.com/user-attachments/assets/71a7447f-3c7b-4435-a040-0c54f8faa253" />
-3. docker cp default.conf me_nginx:/etc/nginx/conf.d/default.conf
-4. docker exec me_nginx nginx -s reload
+1. docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' relaxed_williamson (ewetulanie stworzyc siec)
+2. code default.conf
+3. <img width="571" height="227" alt="image" src="https://github.com/user-attachments/assets/71a7447f-3c7b-4435-a040-0c54f8faa253" />
+4. docker cp default.conf me_nginx:/etc/nginx/conf.d/default.conf
+5. docker exec me_nginx nginx -s reload
 
 ### ZADANIE 4
 
@@ -30,5 +31,20 @@
 5. docker cp default.conf me_nginx:/etc/nginx/conf.d/default.conf
 6. docker cp index.html me_nginx:/usr/share/nginx/html/index.html
 7. docker exec me_nginx nginx -s reload
+
+### ZADANIE 5
+
+1. code cache.conf
+2. <img width="714" height="63" alt="image" src="https://github.com/user-attachments/assets/777d1e4b-570b-4f91-ae41-1f0c8c4c8508" />
+3. code default.conf
+4. <img width="830" height="575" alt="image" src="https://github.com/user-attachments/assets/06a8deba-7cba-4b21-bc78-fabc8622752c" />
+5. docker exec me_nginx mkdir -p /tmp/nginx_cache
+6. docker exec me_nginx chown nginx:nginx /tmp/nginx_cache
+7. docker cp cache.conf me_nginx:/etc/nginx/conf.d/cache.conf
+8. docker cp default.conf me_nginx:/etc/nginx/conf.d/default.conf
+9. docker exec me_nginx nginx -s reload
+10. (2x) curl -s -I http://localhost:8080/api/items
+
+
 
 
