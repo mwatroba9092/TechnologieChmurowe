@@ -6,3 +6,12 @@
 4.<img width="621" height="261" alt="obraz" src="https://github.com/user-attachments/assets/8942fa4d-3647-4e3e-9def-4316755857f3" />  
 5.docker cp index.html me_nginx:/usr/share/nginx/html/index.html
 
+### ZADANIE 2
+
+1. docker run -d node:18-alpine sleep infinity
+2. code server.js
+3. <img width="628" height="380" alt="image" src="https://github.com/user-attachments/assets/4d1f4056-2dda-47be-9840-2c694d20f425" />
+4. docker cp server.js sweet_feistel:/server.js
+5. docker exec -d sweet_feistel node server.js
+
+### ZADANIE 3
