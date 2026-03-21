@@ -11,7 +11,14 @@
 1. docker run -d node:18-alpine sleep infinity
 2. code server.js
 3. <img width="628" height="380" alt="image" src="https://github.com/user-attachments/assets/4d1f4056-2dda-47be-9840-2c694d20f425" />
-4. docker cp server.js sweet_feistel:/server.js
-5. docker exec -d sweet_feistel node server.js
+4. docker cp server.js relaxed_williamson:/server.js
+5. docker exec -d relaxed_williamson node /server.js
 
 ### ZADANIE 3
+
+1. code default.conf
+2. <img width="571" height="227" alt="image" src="https://github.com/user-attachments/assets/71a7447f-3c7b-4435-a040-0c54f8faa253" />
+3. docker cp default.conf me_nginx:/etc/nginx/conf.d/default.conf
+4. docker exec me_nginx nginx -s reload
+
+### ZADANIE 4
