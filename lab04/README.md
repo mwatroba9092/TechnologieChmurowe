@@ -46,7 +46,6 @@ X-Cache-Status: HIT
 
 ## 7. Zmodyfikowany konfiguracja nginx (poprzednia wersja dostepna na poprzednim commicie ended lab04)  
 <img width="945" height="863" alt="image" src="https://github.com/user-attachments/assets/077bb6f5-cde3-46fd-a274-2b90378235a3" />
-<img width="945" height="863" alt="image" src="https://github.com/user-attachments/assets/077bb6f5-cde3-46fd-a274-2b90378235a3" />
 
 ## 8. Komendy uruchamiajce dwie instalacje backendu  
 
