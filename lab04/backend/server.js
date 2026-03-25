@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const app = express();
 app.use(express.json());
 
-const instanceId = crypto.randomBytes(4).toString('hex');
+const instanceId = process.env.INSTANCE_ID || crypto.randomBytes(4).toString('hex');
 
 const items = [{ id: 1, name: 'Przykładowy Produkt 1' }];
 
