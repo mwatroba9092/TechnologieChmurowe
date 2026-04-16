@@ -43,3 +43,35 @@ curl -I http://localhost:8080/api/stats
 HTTP/1.1 200 OK  
 Server: nginx/1.29.7  
 X-Cache-Status: HIT  
+
+## 7. Zmodyfikowany konfiguracja nginx (poprzednia wersja dostepna na poprzednim commicie ended lab04)  
+<img width="945" height="863" alt="image" src="https://github.com/user-attachments/assets/077bb6f5-cde3-46fd-a274-2b90378235a3" />
+
+## 8. Komendy uruchamiajce dwie instalacje backendu  
+
+### Uruchomienie instancji A  
+docker run -d --name api-a --network dashboard-net -e INSTANCE_ID=api-a localhost:5000/dashboard-backend:latest  
+
+### Uruchomienie instancji B  
+docker run -d --name api-b --network dashboard-net -e INSTANCE_ID=api-b localhost:5000/dashboard-backend:latest  
+
+## 9. Komendy budowania, tagowania i publikacji zaktulizwanego obrazu frontendu  
+
+### Zbudowanie obrazu z nowym tagiem v2 (oraz aktualizacja latest)  
+docker build -t localhost:5000/dashboard-frontend:v2 -t localhost:5000/dashboard-frontend:latest ./frontend  
+
+### Publikacja nowej wersji w rejestrze  
+docker push localhost:5000/dashboard-frontend:v2  
+docker push localhost:5000/dashboard-frontend:latest  
+
+### Uruchomienie zaktualizowanego frontendu  
+docker run -d --name frontend --network dashboard-net -p 8080:80 localhost:5000/dashboard-frontend:v2  
+
+## 10. Testy  
+
+### Komenda testowa:
+$ curl -s http://localhost:8080/api/stats && echo "" && sleep 31 && curl -s http://localhost:8080/api/stats && echo ""  
+
+### Wynik:  
+{"count":1,"instanceId":"api-a"}  
+{"count":1,"instanceId":"api-b"}  
