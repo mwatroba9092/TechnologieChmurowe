@@ -42,3 +42,46 @@ Manifests:
 
 $ curl -s http://localhost:8080/api/stats
 {"count":1,"instanceId":"api-a","serverTime":"2026-04-16T09:30:15.123Z","requestCount":2}
+
+# Druga część zadania
+
+## 7. Zmodyfikowane pliki Dockerfile
+### Backend Dockerfile
+<img width="827" height="721" alt="image" src="https://github.com/user-attachments/assets/c726ca9e-87be-4b37-b6d6-6881666ac22e" />
+
+### Frontend Dockerfile
+<img width="833" height="684" alt="image" src="https://github.com/user-attachments/assets/29597a7b-943f-4e46-915c-d90a37e8ba55" />
+
+## 8. Testy jednostkowe
+<img width="801" height="346" alt="image" src="https://github.com/user-attachments/assets/029e793a-78a7-4526-aa62-f3095bf871bf" />
+
+## 9. Pliki .dockerignore (jest taki sam dla backendu i frotendu)
+<img width="270" height="194" alt="image" src="https://github.com/user-attachments/assets/d23e52cd-eb92-4614-b50b-4a00ee5b28e7" />
+
+## 10. Komendy docker buildx
+
+### Budowa backendu (wersja v4)
+docker buildx build --platform linux/amd64,linux/arm64 \
+  --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
+  --build-arg VERSION=v4 \
+  -t localhost:5000/dashboard-backend:v4 \
+  -t localhost:5000/dashboard-backend:latest \
+  --push ./backend
+
+### Budowa frontendu (wersja v4)
+docker buildx build --platform linux/amd64,linux/arm64 \
+  --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
+  --build-arg VERSION=v4 \
+  -t localhost:5000/dashboard-frontend:v4 \
+  -t localhost:5000/dashboard-frontend:latest \
+  --push ./frontend
+
+## 11. Wyniki docker inspect
+  $ docker inspect localhost:5000/dashboard-backend:latest | grep org.opencontainers
+                "org.opencontainers.image.created": "2026-04-22T18:36:46Z",
+                "org.opencontainers.image.title": "Dashboard Backend",
+                "org.opencontainers.image.version": "v4"
+
+## 12. Porównanie wyników z .dockerignore i bez
+Rozmiar kontekstu bez pliku .dockerignore: transferring context: 1.82kB
+Rozmiar kontekstu z plikiem .dockerignore: transferring context: 189B
