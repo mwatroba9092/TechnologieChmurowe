@@ -43,6 +43,7 @@ app.get('/stats', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log(`Backend uruchomiony na porcie 3000. Instancja: ${instanceId}`);
-});
+if (require.main === module) {
+  app.listen(3000, () => console.log(`Backend działa. ID: ${instanceId}`));
+}
+module.exports = app;
