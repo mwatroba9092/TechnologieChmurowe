@@ -9,14 +9,14 @@
 <img width="815" height="559" alt="image" src="https://github.com/user-attachments/assets/2deccb5b-b617-4ea7-9870-928624f60633" />
 
 ## 4. Komendy docker
-# Utworzenie i konfiguracja buildera
+### Utworzenie i konfiguracja buildera
 docker buildx create --name multiarch --driver docker-container --driver-opt network=host --use
 docker buildx inspect --bootstrap
 
-# Budowa i publikacja obrazu backendu
+### Budowa i publikacja obrazu backendu
 docker buildx build --platform linux/amd64,linux/arm64 -t localhost:5000/dashboard-backend:v3 -t localhost:5000/dashboard-backend:latest --push ./backend
 
-# Budowa i publikacja obrazu frontendu
+### Budowa i publikacja obrazu frontendu
 docker buildx build --platform linux/amd64,linux/arm64 -t localhost:5000/dashboard-frontend:v3 -t localhost:5000/dashboard-frontend:latest --push ./frontend
 
 ## 5. Wyniki docker buidx
